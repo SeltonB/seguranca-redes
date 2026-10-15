@@ -1,0 +1,22 @@
+services:
+  alvo:
+    image: python:3.12-alpine
+    user: "1000:1000"
+    working_dir: /site
+    command: ["python", "-m", "http.server", "8000", "--bind", "0.0.0.0", "--directory", "/site"]
+    volumes:
+      - ./site:/site:ro
+    ports:
+      - "127.0.0.1:8080:8000"
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 6
+    networks: [laboratorio]
+
+networks:
+  laboratorio:
+    name: mcp-atividade-lab

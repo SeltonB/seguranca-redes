@@ -1,0 +1,20 @@
+id: lab-backup-exposto
+
+info:
+  name: Backup ficticio exposto no laboratorio MCP
+  author: atividade-seguranca-redes
+  severity: medium
+  description: Detecta exclusivamente o marcador ficticio criado para esta demonstracao.
+  tags: lab,exposure
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/backup-demo.txt"
+    matchers-condition: and
+    matchers:
+      - type: status
+        status: [200]
+      - type: word
+        part: body
+        words: ["LAB_MCP_EXPOSICAO_CONFIRMADA"]

@@ -1,0 +1,3 @@
+LAB_MCP_EXPOSICAO_CONFIRMADA
+Arquivo de backup ficticio publicado indevidamente na raiz do servidor web.
+Nao contem credenciais ou dados reais.
