@@ -1,0 +1,41 @@
+# Complementa compose.yaml; não modifica o alvo estático original.
+services:
+  portal-vulneravel:
+    image: portal-mcp:atividade
+    build: ./portal
+    environment:
+      PORTAL_MODO: vulneravel
+    ports:
+      - "127.0.0.1:8081:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m,uid=1000,gid=1000
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    cpus: 1.0
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 6
+    networks: [laboratorio]
+  portal-seguro:
+    image: portal-mcp:atividade
+    environment:
+      PORTAL_MODO: seguro
+    ports:
+      - "127.0.0.1:8082:8000"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m,uid=1000,gid=1000
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 256m
+    cpus: 1.0
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 6
+    networks: [laboratorio]

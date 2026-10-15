@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus · Portal acadêmico</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Campus início"><span class="monogram">C</span> campus<span class="brand-dot">.</span></a>
+    <p class="nav-label">PORTAL ACADÊMICO</p>
+    <nav aria-label="Navegação principal">
+      <a href="#catalogo">01 <span>Catálogo de cursos</span></a>
+      <a href="#documentos">02 <span>Meus documentos</span></a>
+      <a href="#administracao">03 <span>Administração</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="small-label">SEGURANÇA DE REDES</span><p>Um ambiente para aprender, experimentar e verificar.</p><span>Laboratório MCP · 2026</span></div>
+  </aside>
+  <main>
+    <header class="topbar"><span>Área do estudante <span class="muted">/ Visão geral</span></span><span class="mode {{ mode }}">{{ 'Cenário vulnerável' if mode == 'vulneravel' else 'Cenário corrigido' }}</span></header>
+    <section class="hero"><div><span class="eyebrow">SEU PRÓXIMO PASSO COMEÇA AQUI</span><h1>Conhecimento que<br>abre caminhos.</h1><p>Explore os cursos, acompanhe seus documentos<br class="desktop"> e acesse os serviços do campus.</p><a class="button dark" href="#catalogo">Explorar catálogo <span>↗</span></a></div><div class="hero-art" aria-hidden="true"><div class="orbit"></div><div class="art-card"><span>C / 26</span><strong>Aprender.<br>Conectar.<br>Evoluir.</strong><span>COMUNIDADE ACADÊMICA</span></div></div></section>
+    <div class="notice"><span class="notice-dot"></span> Ambiente didático local. Todas as contas e informações são fictícias.</div>
+    <div class="content-grid">
+      <div class="primary-column">
+        <section class="panel" id="catalogo"><div class="section-head"><div><span class="eyebrow">FORMAÇÃO</span><h2>Catálogo de cursos</h2></div><span class="chip">2026.2</span></div><form id="course-form" class="search"><label class="sr-only" for="course-id">Código do curso</label><input id="course-id" placeholder="Buscar pelo código do curso, ex.: 1" autocomplete="off"><button type="submit">Buscar</button><button type="button" id="all-courses" class="secondary">Todos</button></form><div id="courses" aria-live="polite"></div></section>
+        <section class="panel" id="documentos"><div class="section-head"><div><span class="eyebrow">SECRETARIA DIGITAL</span><h2>Meus documentos</h2></div><span class="line-icon" aria-hidden="true">▤</span></div><p class="muted">Acesse declarações e registros vinculados à sua conta.</p><div id="document-list" class="document-list"></div><form id="document-form" class="search"><label class="sr-only" for="document-id">Número do documento</label><input id="document-id" type="number" min="1" placeholder="Consultar documento pelo número"><button type="submit">Consultar</button></form><div id="document-result" class="result" aria-live="polite">Entre na sua conta para acessar seus documentos.</div></section>
+        <section class="panel" id="administracao"><div class="section-head"><div><span class="eyebrow">GESTÃO ACADÊMICA</span><h2>Área administrativa</h2></div><button id="admin-button" class="secondary">Consultar resumo ↗</button></div><p class="muted">Serviço destinado ao perfil de administrador.</p><div id="admin-result" class="result" aria-live="polite">Os dados serão apresentados após a consulta.</div></section>
+      </div>
+      <aside class="account-column">
+        <section class="panel account"><span class="eyebrow">MINHA CONTA</span><h2 id="account-title">Bem-vindo de volta.</h2><p id="account-description" class="muted">Entre para acessar os serviços acadêmicos.</p><form id="login-form"><label for="login">Usuário</label><input id="login" autocomplete="username" value="ana" required><label for="password">Senha</label><input id="password" type="password" autocomplete="current-password" value="CampusLab!2026" required><button type="submit" class="full">Entrar no portal →</button></form><button id="logout" class="secondary full" hidden>Sair da conta</button><p id="login-result" aria-live="polite"></p><details><summary>Contas de demonstração</summary><p>Usuários: <strong>ana</strong>, <strong>bruno</strong> e <strong>admin</strong>.</p><p>Senha de todas as contas:<br><code>CampusLab!2026</code></p></details></section>
+        <section class="callout"><span class="eyebrow">APRENDER NA PRÁTICA</span><h3>Uma experiência.<br>Duas perspectivas.</h3><p>Compare os cenários e observe como os controles protegem os dados de cada pessoa.</p><span class="big-arrow" aria-hidden="true">↗</span></section>
+      </aside>
+    </div>
+    <footer><span>campus. / Laboratório de Segurança de Redes</span><span>Dados fictícios · Acesso local</span></footer>
+  </main>
+</body></html>
