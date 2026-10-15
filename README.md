@@ -1,2 +1,2 @@
-# seguranca-redes
+Leia o ANALISE_E_GUIA_MCP.md
 
