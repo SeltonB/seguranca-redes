@@ -1,0 +1,46 @@
+{
+    "mcpServers":  {
+                       "nmap-atividade":  {
+                                              "args":  [
+                                                           "run",
+                                                           "-i",
+                                                           "--rm",
+                                                           "--network",
+                                                           "mcp-atividade-lab",
+                                                           "-v",
+                                                           "mcp-atividade-nmap-output:/app/output",
+                                                           "nmap-mcp:atividade"
+                                                       ],
+                                              "command":  "C:\\Users\\Selton Braz\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe"
+                                          },
+                       "nuclei-atividade":  {
+                                                "args":  [
+                                                             "run",
+                                                             "-i",
+                                                             "--rm",
+                                                             "--network",
+                                                             "mcp-atividade-lab",
+                                                             "--mount",
+                                                             "type=bind,source=C:\\Users\\Selton Braz\\Documents\\github-repositorios\\seguranca-redes\\laboratorio-mcp\\templates,target=/lab-templates,readonly",
+                                                             "--env=NUCLEI_TEMPLATES_PATH=/lab-templates",
+                                                             "-v",
+                                                             "mcp-atividade-nuclei-output:/app/output",
+                                                             "nuclei-mcp:atividade"
+                                                         ],
+                                                "command":  "C:\\Users\\Selton Braz\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe"
+                                            },
+                       "sqlmap-atividade":  {
+                                                "command":  "C:\\Users\\Selton Braz\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe",
+                                                "args":  [
+                                                             "run",
+                                                             "-i",
+                                                             "--rm",
+                                                             "--network",
+                                                             "mcp-atividade-lab",
+                                                             "-v",
+                                                             "mcp-atividade-sqlmap-output:/app/output",
+                                                             "sqlmap-mcp:atividade"
+                                                         ]
+                                            }
+                   }
+}
